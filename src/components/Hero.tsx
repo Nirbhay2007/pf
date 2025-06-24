@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, Download, Eye, Sparkles, Code, Palette } from 'lucide-react';
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -82,41 +82,58 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       />
       
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-purple-900/20 to-slate-900/20 z-10"></div>
-
       {/* Floating 3D Elements */}
       <div className="absolute inset-0 z-20">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary rounded-lg opacity-20 animate-float-slow"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-portfolio-secondary to-portfolio-accent rounded-full opacity-30 animate-float"></div>
-        <div className="absolute bottom-40 left-20 w-24 h-24 bg-gradient-to-r from-portfolio-accent to-portfolio-primary rounded-lg opacity-25 animate-float-fast"></div>
-        <div className="absolute bottom-20 right-10 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-20 animate-float-slow"></div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary rounded-2xl opacity-20 animate-float-slow flex items-center justify-center">
+          <Code className="h-10 w-10 text-white" />
+        </div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-portfolio-secondary to-portfolio-accent rounded-full opacity-30 animate-float flex items-center justify-center">
+          <Palette className="h-8 w-8 text-white" />
+        </div>
+        <div className="absolute bottom-40 left-20 w-24 h-24 bg-gradient-to-r from-portfolio-accent to-portfolio-primary rounded-2xl opacity-25 animate-float-fast flex items-center justify-center">
+          <Sparkles className="h-12 w-12 text-white" />
+        </div>
+        <div className="absolute bottom-20 right-10 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-20 animate-float-slow flex items-center justify-center">
+          <Github className="h-6 w-6 text-white" />
+        </div>
       </div>
 
       {/* Content */}
-      <div className="relative z-30 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className="space-y-6 animate-fade-in">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
+      <div className="relative z-30 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div className="space-y-8 animate-fade-in">
+          <div className="flex justify-center mb-6">
+            <div className="modern-card p-4 rounded-full">
+              <Sparkles className="h-12 w-12 text-portfolio-primary animate-pulse" />
+            </div>
+          </div>
+          
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold font-['Poppins']">
             <span className="block text-slate-900 dark:text-white">Hi, I'm</span>
             <span className="block gradient-text">Alex Chen</span>
           </h1>
           
-          <p className="text-xl sm:text-2xl lg:text-3xl text-slate-600 dark:text-slate-300 font-light">
-            Full-Stack Developer & UI/UX Designer
-          </p>
+          <div className="flex items-center justify-center space-x-4 text-xl sm:text-2xl lg:text-3xl text-slate-600 dark:text-slate-300 font-medium">
+            <Code className="h-8 w-8 text-portfolio-primary" />
+            <span>Full-Stack Developer</span>
+            <span className="text-portfolio-secondary">•</span>
+            <Palette className="h-8 w-8 text-portfolio-secondary" />
+            <span>UI/UX Designer</span>
+          </div>
           
-          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed font-['Inter']">
             I craft beautiful, functional digital experiences that bridge the gap between design and technology. 
-            Passionate about creating solutions that make a difference.
+            Passionate about creating solutions that make a difference in people's lives.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <button className="px-8 py-4 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary text-white rounded-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-portfolio-primary/25 animate-pulse-glow">
-              View My Work
+            <button className="group px-8 py-4 bg-gradient-to-r from-portfolio-primary to-portfolio-secondary text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-portfolio-primary/25 flex items-center space-x-2">
+              <Eye className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+              <span>View My Work</span>
             </button>
-            <button className="px-8 py-4 glass-card dark:glass-card-dark hover:scale-105 transition-all duration-300 font-semibold">
-              Download Resume
+            <button className="group px-8 py-4 modern-card hover:scale-105 transition-all duration-300 font-semibold flex items-center space-x-2">
+              <Download className="h-5 w-5 group-hover:translate-y-1 transition-transform duration-300" />
+              <span>Download Resume</span>
             </button>
           </div>
 
@@ -130,10 +147,10 @@ const Hero = () => {
               <a
                 key={label}
                 href={href}
-                className="p-3 glass-card dark:glass-card-dark hover:scale-110 transition-all duration-300 hover:bg-portfolio-primary/10"
+                className="group p-4 modern-card hover:scale-110 transition-all duration-300 hover:bg-portfolio-primary/10"
                 aria-label={label}
               >
-                <Icon className="h-6 w-6" />
+                <Icon className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
               </a>
             ))}
           </div>
@@ -143,7 +160,7 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <button
         onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 p-2 glass-card dark:glass-card-dark hover:scale-110 transition-all duration-300 animate-bounce"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 p-3 modern-card hover:scale-110 transition-all duration-300 animate-bounce"
       >
         <ChevronDown className="h-6 w-6" />
       </button>
